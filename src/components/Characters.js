@@ -53,6 +53,7 @@ return (
                 <h3>{name}</h3>
                 {/* <a href="https://www.google.es" target="_blank" rel="noreferrer">READ MORE</a> */}
                 <Modal id={id} name={name} image={image}/>
+                
               </div>
             </div>
           </div>

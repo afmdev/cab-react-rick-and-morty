@@ -8,20 +8,20 @@ body {
   color: #333;
 }
 
-
-
-.App {
-  font-family: sans-serif;
-  width: 90vw;
-  margin: 0 auto;
-  padding: 2rem 0;
-}
-
 h1 {
   margin-bottom: 1rem;
 }
 
-.container {
+h3 {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.Content {
+  font-family: sans-serif;
+  width: 90vw;
+  margin: 0 auto;
+  padding: 2rem 0;
   list-style: none;
   display: flex;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -34,24 +34,37 @@ h1 {
   align-items: center;
 }
 
-h3 {
-  font-size: 1rem;
-  line-height: 1.4;
+.Searchbar {
+  display: flex;
+  background: #31de99;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+input.input-searchbar {
+  border-radius: 20px;
+  border: 0;
+  padding: 5px 20px;
+  box-shadow: 0px 2px 20px 0 #61773485;
 }
 
 
-/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+
+
+
+/* The flip card container */
 .flip-card {
   background-color: transparent;
   width: 200px;
   height: 200px;
-  border: 1px solid #f1f1f1;
+  outline: 2px solid #31de99;
   perspective: 1000px;
   /* Remove this if you don't want the 3D effect */
   border-radius: 10px;
 }
 
-/* This container is needed to position the front and back side */
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -62,25 +75,22 @@ h3 {
   border-radius: 10px;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
   border-radius: 10px;
 }
 
-/* Position the front and back side */
+
 .flip-card-front,
 .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
   -webkit-backface-visibility: hidden;
-  /* Safari */
   backface-visibility: hidden;
   border-radius: 10px;
 }
 
-/* Style the front side (fallback if image is missing) */
 .flip-card-front {
   background-color: #bbb;
   color: black;
@@ -104,19 +114,10 @@ h3 {
 }
 
 
-.searchbar {
-  background-color: #a8004e;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-
-
+/* Modal container */
 .modal-window {
   position: fixed;
-  background-color: rgba(200, 200, 200, 0.75);
+  background-color: rgb(48 48 48 / 86%);
   top: 0;
   right: 0;
   bottom: 0;
@@ -124,9 +125,8 @@ h3 {
   z-index: 999;
   opacity: 0;
   pointer-events: none;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
   transition: all 0.3s;
+  text-align: center;
 }
 
 .modal-window:target {
@@ -135,13 +135,22 @@ h3 {
 }
 
 .modal-window>div {
-  width: 150px;
+  max-width: 350px;
   position: relative;
   margin: 10% auto;
   padding: 2rem;
   background: #fff;
   color: #444;
+  border-radius: 30px;
+  border: 10px solid #a2cebc;
+  box-shadow: 0px 5px 20px 0 #0000003b;
 }
+
+.modal-window img {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 
 .modal-window header {
   font-weight: bold;
@@ -161,9 +170,4 @@ h3 {
 
 .modal-close:hover {
   color: #000;
-}
-
-.modal-window h1 {
-  font-size: 150%;
-  margin: 0 0 15px;
 }

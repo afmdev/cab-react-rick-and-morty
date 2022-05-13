@@ -1,44 +1,53 @@
 import "./index.css";
 import { useState, useEffect } from "react";
 import Searchbar from "./components/Searchbar";
+import Pagination from "./components/Pagination";
 import Modal from "./components/Modal";
 
 export default function Characters() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [filter, setFilter] = useState(data);
-  
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [filter, setFilter] = useState([])
   
   
 let result = []
 function handleChange(event) {
     let myValue = event.target.value
-    result = data.filter((element) => {
+    result = data.results.filter((element) => {
       return element.name.includes(myValue)
     })
   setFilter(result)
 }
   
   
-const getData = async () => {
+function onNext(event) {
+  let newPage = data.info.next
+  myUrl = newPage
+  getData(myUrl)
+}
+
+  
+let myUrl = "https://rickandmortyapi.com/api/character/?page=1"
+  
+const getData = async (url) => {
   try {
-    const response = await fetch(
-      `https://rickandmortyapi.com/api/character`
-    );
+    const response = await fetch(myUrl);
     if (!response.ok) {
       throw new Error(
         `This is an HTTP error: The status is ${response.status}`
       );
     }
-      let actualData = await response.json();
-      let charactersData = [...actualData.results]
-    setData(charactersData);
-    setFilter(charactersData)
+    let actualData = await response.json();
+    const myData = actualData.results
+    setData(actualData)
+    setFilter(myData)
       setError(null);
+
     } catch (err) {
       setError(err.message);
     setData(null);
+  
     
     } finally {
       setLoading(false);
@@ -47,19 +56,14 @@ const getData = async () => {
   
 useEffect(() => {
   getData()
+//eslint-disable-next-line
 }, [])
-  
-useEffect(() => {
-  console.log("use effect running");
-}, [filter])
-
- 
 
   return (
   
     <div className="App">
       <Searchbar handleChange={handleChange} />
-     
+
       <div className="Content">
         {loading && <div>A moment please...</div>}
 
@@ -75,15 +79,13 @@ useEffect(() => {
                   </div>
                   <div className="flip-card-back">
                     <h3>{name}</h3>
-                    {/* <a href="https://www.google.es" target="_blank" rel="noreferrer">READ MORE</a> */}
-                    
-                    
                   </div>
                 </div>
                 </div>
               </div>
           ))}
-        </div>
+      </div>
+      <Pagination onNext={onNext}/>
     </div>
 );
 }

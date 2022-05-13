@@ -43,6 +43,20 @@ h3 {
   flex-direction: column;
 }
 
+.Pagination {
+  display: flex;
+  margin-bottom: 50px;
+  justify-content: space-evenly;
+}
+
+.Pagination button {
+  border: 0;
+  background: #31de99;
+  border-radius: 20px;
+  padding: 5px 21px;
+  box-shadow: 0 3px 12px 0 #00000029;
+}
+
 input.input-searchbar {
   border-radius: 20px;
   border: 0;

@@ -29,7 +29,6 @@ function handleChange(event) {
 
 const onPrev = (event) => {
   let prevPage = data.info.prev
-
   if (myCounter > 0  ) {
     myUrl = prevPage
     getData(myUrl)
@@ -41,7 +40,6 @@ const onPrev = (event) => {
 }
   
   const onNext = (event) => {
-
   let nextPage = data.info.next
   myUrl = nextPage
   getData(myUrl)

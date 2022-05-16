@@ -1,14 +1,20 @@
 import "./index.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useInsertionEffect } from "react";
 import Searchbar from "./components/Searchbar";
 import Pagination from "./components/Pagination";
 import Modal from "./components/Modal";
 
+
+
+// let myCounter = 0
 export default function Characters() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [filter, setFilter] = useState([])
+  const [disabled, setDisabled] = useState(false)
+  const [myCounter, setMyCounter] = useState(0)
+  
   
   
 let result = []
@@ -20,15 +26,38 @@ function handleChange(event) {
   setFilter(result)
 }
   
-  
-function onNext(event) {
-  let newPage = data.info.next
-  myUrl = newPage
-  getData(myUrl)
-}
 
+const onPrev = (event) => {
+  let prevPage = data.info.prev
+
+  if (myCounter > 0  ) {
+    myUrl = prevPage
+    getData(myUrl)
+    setMyCounter(myCounter-1)
+    console.log(myCounter);
+  } else {
+    setDisabled(false)
+  }
+}
   
-let myUrl = "https://rickandmortyapi.com/api/character/?page=1"
+  const onNext = (event) => {
+
+  let nextPage = data.info.next
+  myUrl = nextPage
+  getData(myUrl)
+  setDisabled(true)
+  setMyCounter(myCounter+1)
+  console.log(myCounter);
+}
+  
+  useEffect(() => {
+    console.log("mz counter", myCounter);
+    if (myCounter === 0) {
+      setDisabled(false)
+    }
+  }, [myCounter])
+  
+let myUrl = "https://rickandmortyapi.com/api/character/"
   
 const getData = async (url) => {
   try {
@@ -42,13 +71,10 @@ const getData = async (url) => {
     const myData = actualData.results
     setData(actualData)
     setFilter(myData)
-      setError(null);
-
+    setError(null);
     } catch (err) {
       setError(err.message);
     setData(null);
-  
-    
     } finally {
       setLoading(false);
     }
@@ -85,8 +111,10 @@ useEffect(() => {
               </div>
           ))}
       </div>
-      <Pagination onNext={onNext}/>
+      <Pagination
+        onNext={onNext}
+        onPrev={onPrev} 
+        disabled={disabled} />
     </div>
 );
 }
-

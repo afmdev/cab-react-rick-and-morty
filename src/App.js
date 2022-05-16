@@ -1,5 +1,5 @@
 import "./index.css";
-import { useState, useEffect, useInsertionEffect } from "react";
+import { useState, useEffect } from "react";
 import Searchbar from "./components/Searchbar";
 import Pagination from "./components/Pagination";
 import Modal from "./components/Modal";
@@ -102,7 +102,7 @@ useEffect(() => {
                 <div className="flip-card-inner">
                   <div className="flip-card-front">
                     <img src={image} alt={name}></img>
-                  </div>
+                </div>
                   <div className="flip-card-back">
                     <h3>{name}</h3>
                   </div>

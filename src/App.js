@@ -4,8 +4,6 @@ import Searchbar from "./components/Searchbar";
 import Pagination from "./components/Pagination";
 import Modal from "./components/Modal";
 
-
-
 // let myCounter = 0
 export default function Characters() {
   const [data, setData] = useState(null)

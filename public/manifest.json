@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Rick & Morti on React.js",
+  "name": "afm : Single Page Application on React.js",
+  "description": "Alejandro Francisco Marrero :: Code Academy Berlin 2022",
   "icons": [
     {
       "src": "favicon.ico",

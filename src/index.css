@@ -13,8 +13,13 @@ h1 {
 }
 
 h3 {
-  font-size: 1rem;
-  line-height: 1.4;
+	font-size: 20px;
+	line-height: 1.4;
+	font-weight: 600;
+}
+
+p {
+	margin-bottom: 4px;
 }
 
 .Content {
@@ -65,9 +70,6 @@ input.input-searchbar {
 }
 
 
-
-
-
 /* The flip card container */
 .flip-card {
   background-color: transparent;
@@ -112,8 +114,7 @@ input.input-searchbar {
 
 .flip-card-back {
   display: flex;
-  background: #0a229b;
-  background: radial-gradient(circle, rgb(10 34 155) 0%, rgb(0 9 109) 100%);
+  background: #31de99;
   color: white;
   transform: rotateY(180deg);
   flex-direction: column;
@@ -121,12 +122,16 @@ input.input-searchbar {
   align-items: center;
 }
 
+.flip-card-back a {
+	color: #626262;
+	text-decoration: none;
+}
+
 .flip-card .flip-card-inner .flip-card-front img {
   width: 200px;
   height: 200px;
   border-radius: 10px;
 }
-
 
 /* Modal container */
 .modal-window {
@@ -156,7 +161,7 @@ input.input-searchbar {
   background: #fff;
   color: #444;
   border-radius: 30px;
-  border: 10px solid #a2cebc;
+  border: 10px solid #31de99;
   box-shadow: 0px 5px 20px 0 #0000003b;
 }
 
@@ -164,7 +169,6 @@ input.input-searchbar {
   width: 100%;
   margin-bottom: 20px;
 }
-
 
 .modal-window header {
   font-weight: bold;
@@ -184,4 +188,15 @@ input.input-searchbar {
 
 .modal-close:hover {
   color: #000;
+}
+
+.footer {
+	font-size: 12px;
+	background: #31de99;
+	display: flex;
+	align-items: center;
+	color: #2c2c2c;
+	flex-direction: column;
+	justify-content: center;
+	padding: 14px 0px 7px 0px;
 }
